@@ -20,10 +20,15 @@ displayData(tableData)
 
 //select the web user's input and the filter button
 var dateInputText = d3.select("#datetime")
+
 var button = d3.select("filter-btn")
 
 // filter data with date that the user inputs
 function clickSelect(){
+    
+    // Prevent page refresh
+    d3.event.preventDefault();
+    
     //print the value that was input
     console.log(dateInputText.property("value"));
     //create a new table showing only the filterd data
@@ -31,6 +36,7 @@ function clickSelect(){
     //display the new table
     displayData(new_table);
 }
+
 
 // event listener to handle change and click
 dateInputText.on("change", clickSelect)
